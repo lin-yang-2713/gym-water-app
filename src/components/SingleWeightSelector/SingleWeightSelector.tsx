@@ -20,12 +20,12 @@ export const SingleWeightSelector = (props: SingleWeightSelectorProps) => {
   const getWaterHeight = createMemo((): number => {
     return (
       (currentWeight() / (props.maximumWeight - props.minimumWeight)) *
-      props.height
+      (props.height-TEXT_HEIGHT)
     );
   });
 
   const getWaterTop = createMemo((): number => {
-    return props.height - getWaterHeight() + 20;
+    return props.height - getWaterHeight();
   });
 
   /**
@@ -106,7 +106,8 @@ export const SingleWeightSelector = (props: SingleWeightSelectorProps) => {
         class={styles.SingleWeightSelectorWaterTank}
         style={{
           width: `${props.width}px`,
-          height: `${props.height}px`,
+          height: `${props.height-TEXT_HEIGHT}px`,
+          "margin-top": `${TEXT_HEIGHT}px`,
         }}
       >
         <div
